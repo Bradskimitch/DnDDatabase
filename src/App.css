@@ -1,0 +1,113 @@
+.App {
+  /*text-align: center;*/
+  background-color: black;
+}
+.App-body{
+background-color: #282c34;
+width: 80%;
+margin-left: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 15px;
+  color: white;
+}
+
+.sideBar{
+  width: 20%;
+  margin-right: auto;
+  position: absolute;
+  align-items: right;
+}
+.loginBars{
+ padding: 10px;
+ width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.menu{
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+width: 90%;
+text-align: center;
+
+background-color: red;
+}
+
+#menuButton{
+  margin-top: 2px;
+  margin-bottom: 2px;
+  width: 70%;
+  border: none;
+background-color: white;
+color:black;
+border: 2px solid grey;
+  font-size: 2vh;
+  border-radius: 5px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}#menuButton:hover{
+  background-color: grey;
+  color:white;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+}
+
+table, th, td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.listButton button{
+  vertical-align: top;
+  margin-top: 5px;
+  margin-left: 10px;
+  border-radius: 5px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  min-height: 30px;
+  background-color: white;
+  color:black;
+  border: 2px solid grey;
+}
+#tableButton{
+  text-align: left;
+  min-width: 700px;
+  width: 90%;
+}#tableButton:hover{
+  background-color: grey;
+  color:white;
+}
+#B{
+font-size: 0px;
+}
+#tableButton:hover + #B {
+    font-size:20px;
+}
+#deleteButton{
+  text-align: center;
+  width: 60px;
+
+}#deleteButton:hover{
+  background-color: red;
+  color:pink;
+  
+}
+
+#dataEntry{
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+#characteristic{
+  min-width: 8vw;
+}
+.newSection{
+  margin-top: 5px;
+}
