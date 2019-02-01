@@ -40,7 +40,7 @@ class ItemList extends Component {
         
     addItem = (e) => {
         e.preventDefault();
-        axios.post(`http://localhost:8080/SoloProject/rest/solo/item/json`, {
+        axios.post('http://localhost:8080/SoloProject/rest/solo/item/json', {
             equipmentName: this.refs.itemName.value,
             equipmentType: this.refs.itemType.value,
             equipmentRarity: this.refs.itemRarity.value,

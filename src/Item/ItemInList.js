@@ -21,11 +21,11 @@ class ItemInList extends Component {
         }).then(response => {
             this.props.action();
         });
-        this.refs.itemName.value = '';
-        this.refs.itemType.value = '';
-        this.refs.itemRarity.value = '';
-        this.refs.itemAttunement.value = '';
-        this.refs.itemDescription.value = '';
+        this.refs.itemName.value = null;
+        this.refs.itemType.value = null;
+        this.refs.itemRarity.value = null;
+        this.refs.itemAttunement.value = null;
+        this.refs.itemDescription.value = null;
     }
 
     render() {
@@ -33,24 +33,25 @@ class ItemInList extends Component {
             <div className='listButton'>
                 <fieldset>
                     <legend>{this.props.Name}</legend>
-                    <div>{this.props.Type + ', ' + this.props.Rarity + '(' + this.props.Attunement + ')'}</div>
+                    <div className="dataEntry">{this.props.Type + ', ' + this.props.Rarity + '(' + this.props.Attunement + ')'}</div>
                     <br />
-                    <div>{this.props.Description}</div>
+                    <div className="dataEntry">{this.props.Description}</div>
                     <br />
                     <fieldset>
                         <legend>Modify</legend>
-                        <div className='column'>
-                        <form className='updateForm' onSubmit={this.addItem}>
-                            <input ref="itemName" type="text" placeholder="Enter Item Name" />
-                            <input ref="itemType" type="text" placeholder="Enter Item Type" />
-                            <input ref="itemRarity" type="text" placeholder="Enter Item Rarity" />
-                            <input ref="itemAttunement" type="text" placeholder="Enter Item Attunement Needs" />
-                            <br />
-                            <input ref="itemDescription" type="text" placeholder="Enter Item Description" />
-                        </form>
-                        </div>
-                        <button id='updateButton' onClick={this.updateItem}>Update</button>
-                        <button id='deleteButton' onClick={this.deleteEntry}>Delete</button>
+
+                            <div className='column'>
+                                <form className='updateForm' onSubmit={this.addItem}>
+                                    <input ref="itemName" type="text" placeholder="Enter Item Name" />
+                                    <input ref="itemType" type="text" placeholder="Enter Item Type" />
+                                    <input ref="itemRarity" type="text" placeholder="Enter Item Rarity" />
+                                    <input ref="itemAttunement" type="text" placeholder="Enter Item Attunement Needs" />
+                                    <br />
+                                    <textarea className="massInput" ref="itemDescription" placeholder="Enter Item Description" />
+                                </form>
+                            </div>
+                            <button className="modifyEntryButton" id='updateButton' onClick={this.updateItem}>Update</button>
+                            <button className="modifyEntryButton" id='deleteButton' onClick={this.deleteEntry}>Delete</button>
                     </fieldset>
                 </fieldset>
             </div>

@@ -64,7 +64,7 @@ table, th, td {
   text-align: center;
 }
 
-.listButton button{
+.modifyEntryButton{
   vertical-align: top;
   margin-top: 5px;
   margin-left: 10px;
@@ -75,34 +75,15 @@ table, th, td {
   background-color: white;
   color:black;
   border: 2px solid grey;
-}
-#tableButton{
-  text-align: left;
-  min-width: 700px;
-  width: 90%;
-}#tableButton:hover{
-  background-color: grey;
-  color:white;
-}
-#B{
-font-size: 0px;
-}
-#tableButton:hover + #B {
-    font-size:20px;
-}
-#deleteButton{
+} #deleteButton, #updateButton{
   text-align: center;
   width: 60px;
-
 }#deleteButton:hover{
   background-color: red;
   color:pink;
-  
-}
-
-#dataEntry{
-  padding-top: 2px;
-  padding-bottom: 2px;
+}#updateButton:hover{
+  background-color: green;
+  color:white;
 }
 
 #characteristic{

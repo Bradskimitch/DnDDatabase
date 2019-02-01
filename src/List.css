@@ -7,4 +7,41 @@ text-align: left;
 .dataEntry{
   padding-top: 2px;
   padding-bottom: 2px;
+    word-wrap: break-word; /* IE>=5.5 */
+  white-space: pre; /* IE>=6 */
+  white-space: -moz-pre-wrap; /* For Fx<=2 */
+  white-space: pre-wrap; /* Fx>3, Opera>8, Safari>3*/
+}
+
+.massInput{
+  margin-left: 0px;
+  margin-top: 5px;
+  width:575px;
+  height: 100px;
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
 }
