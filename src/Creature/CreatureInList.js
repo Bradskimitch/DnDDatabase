@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-class CreatureListButton extends Component {
+class CreatureInList extends Component {
     deleteEntry = () => {
         axios.delete('http://localhost:8080/SoloProject/rest/solo/item/json/' + this.props.Id)
             .then(res => {
@@ -24,4 +24,4 @@ class CreatureListButton extends Component {
         );
     }
 }
-export default CreatureListButton;
+export default CreatureInList;

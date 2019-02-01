@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../App.css';
 import '../List.css';
-import CreatureListButton from './CreatureListButton.js'
+import CreatureInList from './CreatureInList.js'
 
 let data;
 let userInput;
@@ -42,7 +42,7 @@ class CreatureList extends Component {
         let objects = this.state.creatures;
         for (let i = 0; i < this.state.creatures.length; i++) {
             elements.push(
-                <CreatureListButton
+                <CreatureInList
                     action ={this.handler}
                     Id ={this.state.creatures[i].creatureId}
                     Name ={this.state.creatures[i].creatureName}
