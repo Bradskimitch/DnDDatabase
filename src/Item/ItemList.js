@@ -20,7 +20,7 @@ class ItemList extends Component {
         this.update = () => {
             axios.get('http://localhost:8080/SoloProject/rest/solo/item/json')
                 .then(res => {
-                    const items = res.data;
+                    let items = res.data.filter(o => Object.keys(o).some(k => String(o[k]).toLowerCase().includes(this.refs.userInput.value.toLowerCase())));
                     this.setState({ items });
                 })
         }
