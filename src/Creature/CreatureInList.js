@@ -33,11 +33,9 @@ class CreatureInList extends Component {
             <div className='listButton'>
                 <fieldset>
                     <legend>{this.props.Name}</legend>
-                    <div>{this.props.Type + ', ' + this.props.Rarity + '(' + this.props.Attunement + ')'}</div>
-                    <div id='dataEntry'>{this.props.Name}<br /></div>
-                    <div id='dataEntry'>{this.props.AC}<br /></div>
-                    <div id='dataEntry'>{this.props.HP}<br /></div>
-                    <div id='dataEntry'>{this.props.Speed}<br /></div>
+                    <div id='dataEntry'>AC = {this.props.AC}<br /></div>
+                    <div id='dataEntry'>HP = {this.props.HP}<br /></div>
+                    <div id='dataEntry'>Speed = {this.props.Speed}<br /></div>
                     <br />
                     <fieldset>
                         <legend>Modify</legend>
