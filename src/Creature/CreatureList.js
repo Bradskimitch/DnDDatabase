@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../App.css';
 import '../List.css';
-import CreatureListButton from './CreatureListButton.js'
+import CreatureInList from './CreatureInList.js'
 
 let data;
 let userInput;
@@ -47,10 +47,10 @@ class CreatureList extends Component {
         }).then(response => {
             this.update();
         });
-        this.refs.creatureName.value = null;
-        this.refs.itemType.value = null;
-        this.refs.itemRarity.value = null;
-        this.refs.itemAttunement.value = null;
+        this.refs.creatureName.value = '';
+        this.refs.creatureAC.value = '';
+        this.refs.creatureHP.value = '';
+        this.refs.creatureSpeed.value = '';
     }
 
     render() {
@@ -58,7 +58,7 @@ class CreatureList extends Component {
         let objects = this.state.creatures;
         for (let i = 0; i < this.state.creatures.length; i++) {
             elements.push(
-                <CreatureListButton
+                <CreatureInList
                     action={this.handler}
                     Id={this.state.creatures[i].id}
                     Name={this.state.creatures[i].creatureName}
@@ -78,8 +78,8 @@ class CreatureList extends Component {
                         <legend>New Creature</legend>
                         <input ref="creatureName" type="text" placeholder="Enter Creature Name" />
                         <input ref="creatureAC" type="text" placeholder="Enter Creature AC" />
-                        <input ref="creatureHP" type="text" placeholder="Enter Item Rarity" />
-                        <input ref="creatureSpeed" type="text" placeholder="Enter Item Attunement Needs" />
+                        <input ref="creatureHP" type="text" placeholder="Enter Creature HP" />
+                        <input ref="creatureSpeed" type="text" placeholder="Enter Creature Speed" />
                         <button type='submit'>Submit</button>
 
                     </fieldset>

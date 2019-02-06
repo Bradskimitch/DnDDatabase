@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-class CreatureListButton extends Component {
+class CreatureInList extends Component {
     deleteEntry = () => {
         axios.delete('http://localhost:8080/SoloProject/rest/solo/creature/json/' + this.props.Id)
             .then(res => {
                 this.props.action();
+                //console.log(res);
             });
 
     }
 
-    updateItem = (e) => {
+    updateCreature = (e) => {
         e.preventDefault();
         axios.put('http://localhost:8080/SoloProject/rest/solo/creature/json/' + this.props.Id, {
             creatureName: this.refs.creatureName.value,
@@ -18,6 +19,7 @@ class CreatureListButton extends Component {
             creatureSpeed: this.refs.creatureSpeed.value
         }).then(response => {
             this.props.action();
+            //console.log(response);
         });
         this.refs.creatureName.value = '';
         this.refs.creatureAC.value = '';
@@ -29,16 +31,30 @@ class CreatureListButton extends Component {
     render() {
         return (
             <div className='listButton'>
-                <button id='tableButton'>
-                    <div id='dataEntry'>{this.props.Name}<br/></div>
-                    <div id='dataEntry'>{this.props.AC}<br/></div>
-                    <div id='dataEntry'>{this.props.HP}<br/></div>
-                    <div id='dataEntry'>{this.props.Speed}<br/></div>
+                <fieldset>
+                    <legend>{this.props.Name}</legend>
+                    <div>{this.props.Type + ', ' + this.props.Rarity + '(' + this.props.Attunement + ')'}</div>
+                    <div id='dataEntry'>{this.props.Name}<br /></div>
+                    <div id='dataEntry'>{this.props.AC}<br /></div>
+                    <div id='dataEntry'>{this.props.HP}<br /></div>
+                    <div id='dataEntry'>{this.props.Speed}<br /></div>
                     <br />
-                </button>
-                <button id='deleteButton' onClick={this.deleteEntry}>Delete</button>
+                    <fieldset>
+                        <legend>Modify</legend>
+                        <div className='column'>
+                            <form className='updateForm' onSubmit={this.addItem}>
+                                <input ref="creatureName" type="text" placeholder="Enter Creature Name" />
+                                <input ref="creatureAC" type="text" placeholder="Enter Creature AC" />
+                                <input ref="creatureHP" type="text" placeholder="Enter Creature HP" />
+                                <input ref="creatureSpeed" type="text" placeholder="Enter Creature Speed" />
+                            </form>
+                        </div>
+                        <button id='updateButton' onClick={this.updateCreature}>Update</button>
+                        <button id='deleteButton' onClick={this.deleteEntry}>Delete</button>
+                    </fieldset>
+                </fieldset>
             </div>
         );
     }
 }
-export default CreatureListButton;
+export default CreatureInList;
