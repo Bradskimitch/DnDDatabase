@@ -6,7 +6,7 @@
 background-color: #282c34;
 max-width: calc(100% - 100px);
 min-width: calc(100% - 300px);
-width: 80%;
+width: 85%;
 margin-left: auto;
   min-height: 100vh;
   display: flex;
@@ -19,12 +19,11 @@ margin-left: auto;
 .sideBar{
   min-width: 100px;
   max-width: 300px;
-  width: 20%;
+  width: 15%;
   margin-top: 20px;
   margin-right: auto;
   margin-left: auto;
   position: absolute;
-  align-items: right;
   text-align: center;
 }
 
@@ -33,7 +32,7 @@ margin-left: auto;
   margin-bottom: 2px;
   margin-left: auto;
   margin-right: auto;
-  width: 70%;
+  width: 80%;
   border: none;
   background-color: white;
   color:black;
@@ -43,13 +42,8 @@ margin-left: auto;
   -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }.menuButton:hover{
-  background-color: grey;
+  background-color: #282c34;
   color:white;
-}
-
-.column {
-  float: left;
-  width: 33.33%;
 }
 
 table, th, td {

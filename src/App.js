@@ -51,18 +51,18 @@ class App extends Component {
         <div className="App">
           <div className="sideBar">
             <Link to="/">
-              <button className="menuButton" type="button">Home</button>
+              <button className="menuButton">Home</button>
             </Link>
             <Link to="/itemslist">
-              <button className="menuButton" type="button">Magic Items</button>
+              <button className="menuButton">Magic Items</button>
             </Link>
             <Link to="/creaturelist">
-              <button className="menuButton" type="button">Creatures</button>
+              <button className="menuButton">Creatures</button>
             </Link>
           </div>
 
           <div className="App-body">
-          <header>The D&D Database</header>
+            <header>The D&D Database</header>
             <Route exact={true} path='/' render={() => (
               <div className="">
               </div>
