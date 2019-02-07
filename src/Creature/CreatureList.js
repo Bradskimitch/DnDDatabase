@@ -4,23 +4,20 @@ import '../App.css';
 import '../List.css';
 import CreatureInList from './CreatureInList.js'
 
-let data;
-let userInput;
-
 class CreatureList extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.handler = this.handler.bind(this);
         this.state = {
-            creatures: "Example",
+            creatures: this.props.creatures
         }
-
         this.update = () => {
             axios.get('http://localhost:8080/SoloProject/rest/solo/creature/json')
                 .then(res => {
                     const creatures = res.data;
                     this.setState({ creatures });
+                    this.props.action();
                 })
         }
     }
@@ -55,7 +52,6 @@ class CreatureList extends Component {
 
     render() {
         let elements = [];
-        let objects = this.state.creatures;
         for (let i = 0; i < this.state.creatures.length; i++) {
             elements.push(
                 <CreatureInList
@@ -71,7 +67,7 @@ class CreatureList extends Component {
         return (
             <div className="databaseSection">
                 <header>
-                    <input ref="userInput" type="text" placeholder="Enter Creature Name" onChange={this.update} />
+                    Search: <input ref="userInput" type="text" placeholder="Search Items" onChange={this.update} />
                 </header>
                 <form className='itemForm' onSubmit={this.addItem}>
                     <fieldset>
@@ -80,8 +76,7 @@ class CreatureList extends Component {
                         <input ref="creatureAC" type="text" placeholder="Enter Creature AC" />
                         <input ref="creatureHP" type="text" placeholder="Enter Creature HP" />
                         <input ref="creatureSpeed" type="text" placeholder="Enter Creature Speed" />
-                        <button type='submit'>Submit</button>
-
+                        <button className="modifyEntryButton" id='updateButton' type='submit'>Submit</button>
                     </fieldset>
                 </form>
                 {elements}

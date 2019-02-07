@@ -4,10 +4,6 @@ import '../App.css';
 import '../List.css';
 import ItemInList from './ItemInList.js'
 
-
-let data;
-var userInput;
-
 class ItemList extends Component {
 
     constructor() {
@@ -20,7 +16,10 @@ class ItemList extends Component {
         this.update = () => {
             axios.get('http://localhost:8080/SoloProject/rest/solo/item/json')
                 .then(res => {
-                    let items = res.data.filter(o => Object.keys(o).some(k => String(o[k]).toLowerCase().includes(this.refs.userInput.value.toLowerCase())));
+                    //const items = res.data.filter(o => Object.keys(o).some(k => String(o[k]).toLowerCase().includes(this.refs.userInput.value.toLowerCase())));
+                    let items = res.data.filter(o => o.equipmentName.toLowerCase().includes(this.refs.userNameInput.value.toLowerCase()));
+                    items = items.filter(o => o.equipmentType.toLowerCase().includes(this.refs.userTypeInput.value.toLowerCase()));
+                    items = items.filter(o => o.equipmentRarity.toLowerCase().includes(this.refs.userRarityInput.value.toLowerCase()));
                     this.setState({ items });
                 })
         }
@@ -37,7 +36,7 @@ class ItemList extends Component {
                 this.setState({ items });
             })
     }
-        
+
     addItem = (e) => {
         e.preventDefault();
         axios.post(`http://localhost:8080/SoloProject/rest/solo/item/json`, {
@@ -55,9 +54,9 @@ class ItemList extends Component {
         this.refs.itemAttunement.value = null;
         this.refs.itemDescription.value = null;
     }
+
     render() {
         let elements = [];
-        let objects = this.state.items;
         for (let i = 0; i < this.state.items.length; i++) {
             elements.push(
                 <ItemInList
@@ -74,22 +73,23 @@ class ItemList extends Component {
         return (
             <div className="databaseSection">
                 <header>
-                    <input ref="userInput" type="text" placeholder="Enter Item Name" onChange={this.update} />
+                    Search: <input ref="userNameInput" type="text" placeholder="Search By Item name" onChange={this.update} />
+                    <input ref="userTypeInput" type="text" placeholder="Search By Item Type" onChange={this.update} />
+                    <input ref="userRarityInput" type="text" placeholder="Search By Item Rarity" onChange={this.update} />
                 </header>
-                    <form className='itemForm' onSubmit={this.addItem}>
-                        <fieldset>
-                            <legend>New Item</legend>
-                            <input ref="itemName" type="text" placeholder="Enter Item Name" />
-                            <input ref="itemType" type="text" placeholder="Enter Item Type" />
-                            <input ref="itemRarity" type="text" placeholder="Enter Item Rarity" />
-                            <input ref="itemAttunement" type="text" placeholder="Enter Item Attunement Needs" />
-                            <button type='submit'>Submit</button>
-                            <br />
-                            <input ref="itemDescription" type="text" placeholder="Enter Item Description" />
-
-                        </fieldset>
-                    </form>
-                    {elements}
+                <form className='itemForm' onSubmit={this.addItem}>
+                    <fieldset>
+                        <legend>New Item</legend>
+                        <input ref="itemName" type="text" placeholder="Enter Item Name" />
+                        <input ref="itemType" type="text" placeholder="Enter Item Type" />
+                        <input ref="itemRarity" type="text" placeholder="Enter Item Rarity" />
+                        <input ref="itemAttunement" type="text" placeholder="Enter Item Attunement Needs" />
+                        <button className="modifyEntryButton" id='updateButton' type='submit'>Submit</button>
+                        <br />
+                        <textarea ref="itemDescription" className="massInput" type="text" placeholder="Enter Item Description"/>
+                    </fieldset>
+                </form>
+                {elements}
             </div>
         );
     }
