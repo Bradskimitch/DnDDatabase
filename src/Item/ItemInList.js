@@ -3,7 +3,7 @@ import axios from 'axios';
 
 class ItemInList extends Component {
     deleteEntry = () => {
-        axios.delete('http://localhost:8080/SoloProject/rest/solo/item/json/' + this.props.Id)
+        axios.delete('http://dnd.ukwest.cloudapp.azure.com:8080/SoloProject/rest/solo/item/json/' + this.props.Id)
             .then(res => {
                 this.props.action();
             });
@@ -12,7 +12,7 @@ class ItemInList extends Component {
 
     updateItem = (e) => {
         e.preventDefault();
-        axios.put('http://localhost:8080/SoloProject/rest/solo/item/json/' + this.props.Id, {
+        axios.put('http://dnd.ukwest.cloudapp.azure.com:8080/SoloProject/rest/solo/item/json/' + this.props.Id, {
             equipmentName: this.refs.itemName.value,
             equipmentType: this.refs.itemType.value,
             equipmentRarity: this.refs.itemRarity.value,

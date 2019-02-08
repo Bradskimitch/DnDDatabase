@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../App.css';
 import Characteristics from '../Characteristics.js'
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 
 class Creature extends Component {
@@ -12,19 +13,22 @@ class Creature extends Component {
         }
     }
     deleteEntry = () => {
-        axios.delete('http://localhost:8080/SoloProject/rest/solo/creature/json/' + this.state.creatures.id)
+        axios.delete('http://dnd.ukwest.cloudapp.azure.com:8080/SoloProject/rest/solo/creature/json/' + this.state.creatures.id)
             .then(res => {
                 this.props.action();
-                
-                //console.log(res);
+                console.log(this.state.creatures.id);
+                console.log(res);
             });
     }
     updateCreature = (e) => {
         e.preventDefault();
-        axios.put('http://localhost:8080/SoloProject/rest/solo/creature/json/' + this.state.creatures.id, {
-           // creatureName: this.refs.creatureName.value,
-            creatureAC: this.refs.creatureAC.value,
+        axios.put('http://dnd.ukwest.cloudapp.azure.com:8080/SoloProject/rest/solo/creature/json/' + this.state.creatures.id, {
+            creatureName: this.refs.creatureName.value,
+            creatureRace: this.refs.creatureRace.value,
+            creatureSubRace: this.refs.creatureSubRace.value,
+            creatureAllignment: this.refs.creatureAllignment.value,
             creatureHP: this.refs.creatureHP.value,
+            creatureAC: this.refs.creatureAC.value,
             creatureSpeed: this.refs.creatureSpeed.value,
             creatureStr: this.refs.creatureSTR.value,
             creatureDex: this.refs.creatureDEX.value,
@@ -49,6 +53,8 @@ class Creature extends Component {
         }).then(response => {
             this.props.action();
             console.log(response);
+        }).catch(error => {
+            console.log(error.response)
         });
 
     }
@@ -99,9 +105,9 @@ class Creature extends Component {
                         <div className='column'>
                             <form className='updateForm' onSubmit={this.addItem}>
                                 <li><input ref="creatureName" type="text" placeholder="Enter Creature Name" /></li>
-                                <li><input ref="creatureAC" type="text" placeholder="Enter Creature AC" />
-                                    <input ref="creatureArmour" type="text" placeholder="Enter Creature Armour Type" />
-                                </li>
+                                <li><input ref="creatureRace" type="text" placeholder="Enter Creature Race" /> <input ref="creatureSubRace" type="text" placeholder="Enter Creature Subrace" /></li>
+                                <li><input ref="creatureAllignment" type="text" placeholder="Enter Creature Allignment" /></li>
+                                <li><input ref="creatureAC" type="text" placeholder="Enter Creature AC" /></li>
                                 <li><input ref="creatureHP" type="text" placeholder="Enter Creature HP" /></li>
                                 <li><input ref="creatureSpeed" type="text" placeholder="Enter Creature Speed" /></li>
                                 <li>
@@ -128,8 +134,10 @@ class Creature extends Component {
                             </form>
                         </div>
                         <button className="modifyEntryButton" id='updateButton' onClick={this.updateCreature}>Update</button>
-                        
-                        <button className="modifyEntryButton" id='deleteButton' onClick={this.deleteEntry}>Delete</button>
+                        <Link to="/deleteMessage">
+                            <button className="modifyEntryButton" id='deleteButton' onClick={this.deleteEntry}>Delete</button>
+                        </Link>
+
                     </fieldset>
                 </fieldset>
             </div>

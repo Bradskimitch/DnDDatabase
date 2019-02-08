@@ -15,7 +15,7 @@ class App extends Component {
       creatures: "Example"
     }
     this.update = () => {
-      axios.get('http://localhost:8080/SoloProject/rest/solo/creature/json')
+      axios.get('http://dnd.ukwest.cloudapp.azure.com:8080/SoloProject/rest/solo/creature/json')
         .then(res => {
           const creatures = res.data;
           this.setState({ creatures });
@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8080/SoloProject/rest/solo/creature/json')
+    axios.get('http://dnd.ukwest.cloudapp.azure.com:8080/SoloProject/rest/solo/creature/json')
       .then(res => {
         const creatures = res.data;
         this.setState({ creatures });
@@ -78,6 +78,14 @@ class App extends Component {
                 action={this.handler}
                 creatures={this.state.creatures}
               />
+            )} />
+            <Route exact={true} path='/deleteMessage' render={() => (
+              <div>
+                <div> Entry Deleted </div>
+                <Link to="/creaturelist">
+                  <button>Return</button>
+                </Link>
+              </div>
             )} />
             {creatureElements}
           </div>

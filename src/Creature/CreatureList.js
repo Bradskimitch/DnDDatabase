@@ -13,7 +13,7 @@ class CreatureList extends Component {
             creatures: this.props.creatures
         }
         this.update = () => {
-            axios.get('http://localhost:8080/SoloProject/rest/solo/creature/json')
+            axios.get('http://dnd.ukwest.cloudapp.azure.com:8080/SoloProject/rest/solo/creature/json')
                 .then(res => {
                     const creatures = res.data;
                     this.setState({ creatures });
@@ -27,7 +27,7 @@ class CreatureList extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8080/SoloProject/rest/solo/creature/json')
+        axios.get('http://dnd.ukwest.cloudapp.azure.com:8080/SoloProject/rest/solo/creature/json')
             .then(res => {
                 const creatures = res.data;
                 this.setState({ creatures });
@@ -36,11 +36,30 @@ class CreatureList extends Component {
 
     addItem = (e) => {
         e.preventDefault();
-        axios.post(`http://localhost:8080/SoloProject/rest/solo/creature/json`, {
+        axios.post(`http://dnd.ukwest.cloudapp.azure.com:8080/SoloProject/rest/solo/creature/json`, {
             creatureName: this.refs.creatureName.value,
-            creatureAC: this.refs.creatureAC.value,
-            creatureHP: this.refs.creatureHP.value,
-            creatureSpeed: this.refs.creatureSpeed.value
+            creatureAC: 0,
+            creatureHP: 0,
+            creatureSpeed: 0,
+            creatureStr: 0,
+            creatureDex: 0,
+            creatureCon: 0,
+            creatureInt: 0,
+            creatureWis: 0,
+            creatureCha: 0,
+            creatureSavingThrows: 0,
+            creatureSkills: 0,
+            creatureDamageRes: 0,
+            creatureDamageImmune: 0,
+            creatureDamageVulnerable: 0,
+            creatureConditionImmune: 0,
+            creatureSenses: 0,
+            creatureLanguage: 0,
+            creatureCR: 0,
+            creatureAbilities: 0,
+            creatureActions: 0,
+            creatureReactions: 0,
+            creatureLegendary: 0,
         }).then(response => {
             this.update();
         });
@@ -56,11 +75,7 @@ class CreatureList extends Component {
             elements.push(
                 <CreatureInList
                     action={this.handler}
-                    Id={this.state.creatures[i].id}
-                    Name={this.state.creatures[i].creatureName}
-                    AC={this.state.creatures[i].creatureAC}
-                    HP={this.state.creatures[i].creatureHP}
-                    Speed={this.state.creatures[i].creatureSpeed}
+                    creature={this.state.creatures[i]}
                 />
             );
         }

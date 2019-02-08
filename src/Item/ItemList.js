@@ -14,7 +14,7 @@ class ItemList extends Component {
         }
 
         this.update = () => {
-            axios.get('http://localhost:8080/SoloProject/rest/solo/item/json')
+            axios.get('http://dnd.ukwest.cloudapp.azure.com:8080/SoloProject/rest/solo/item/json')
                 .then(res => {
                     //const items = res.data.filter(o => Object.keys(o).some(k => String(o[k]).toLowerCase().includes(this.refs.userInput.value.toLowerCase())));
                     let items = res.data.filter(o => o.equipmentName.toLowerCase().includes(this.refs.userNameInput.value.toLowerCase()));
@@ -30,7 +30,7 @@ class ItemList extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:8080/SoloProject/rest/solo/item/json')
+        axios.get('http://dnd.ukwest.cloudapp.azure.com:8080/SoloProject/rest/solo/item/json')
             .then(res => {
                 const items = res.data;
                 this.setState({ items });
@@ -39,7 +39,7 @@ class ItemList extends Component {
 
     addItem = (e) => {
         e.preventDefault();
-        axios.post(`http://localhost:8080/SoloProject/rest/solo/item/json`, {
+        axios.post(`http://dnd.ukwest.cloudapp.azure.com:8080/SoloProject/rest/solo/item/json`, {
             equipmentName: this.refs.itemName.value,
             equipmentType: this.refs.itemType.value,
             equipmentRarity: this.refs.itemRarity.value,
